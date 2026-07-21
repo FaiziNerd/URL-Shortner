@@ -1,0 +1,1 @@
+Trying to learn backend stuff will it pay my bills???
