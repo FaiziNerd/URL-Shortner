@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const urlRoute = require("./routes/url");
 const userRoute = require("./routes/user")
+const staticRoute = require('./routes/staticRouter')
 
 
 const connectToMongoDB = require("./connect");
@@ -15,6 +16,7 @@ const PORT = process.env.PORT;
 
 // Parse JSON body
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
 
 // Connect MongoDB
 connectToMongoDB()
@@ -24,17 +26,10 @@ connectToMongoDB()
 app.set("view engine", "ejs")
 app.set("views",path.resolve("./views"))
 
-app.get("/test", async (req,res)=>
-{
- const allURLs = await URL.find({})
-return res.render("home", {
-    urls: allURLs,
-})
-})
-
 
 // Routes
 app.use("/url", urlRoute);
+app.use('/', staticRoute)
 
 app.get('/url/:shortId', async (req,res)=>
 {

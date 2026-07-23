@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>Hey from the server</h1>
-    <ul>
-    <% urls.forEach((url) => { %>
-        <li><%= url.shortId %></li>
-    <% }) %>
-</ul>
+   <h1 class='text-center mt-10 font-semibold text-xl'>URL Shortner</h1>
+   <div class='flex justify-center'>
+  <form method="POST" action="/url">
+    <label>
+      <p class="mb-2 mt-4 text-lg  ">Enter your original URL:</p>
+      <input
+        type="text"
+        placeholder="https://example.com"
+        class="border border-gray-400 p-2 rounded w-80"
+        name="url"
+      />
+      <button type="submit" class=" block mx-auto bg-blue-600 text-white 
+      px-3 py-1 rounded-lg mt-4 transition transform active:scale-110">
+    Generate
+</button>
+    </label>
+  </form>
+</div>
 </body>
 </html>
