@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path")
 
 require("dotenv").config();
 
@@ -16,11 +17,23 @@ app.use(express.json());
 connectToMongoDB()
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
+// view engine
+app.set("view engine", "ejs")
+app.set("views",path.resolve("./views"))
+
+app.get("/test", async (req,res)=>
+{
+ const allURLs = await URL.find({})
+return res.render("home", {
+    urls: allURLs,
+})
+})
+
 
 // Routes
 app.use("/url", urlRoute);
 
-app.get('/:shortId', async (req,res)=>
+app.get('/url/:shortId', async (req,res)=>
 {
  const shortId = req.params.shortId
  const  entry = await URL.findOneAndUpdate(
