@@ -5,6 +5,9 @@ const path = require("path")
 require("dotenv").config();
 
 const urlRoute = require("./routes/url");
+const userRoute = require("./routes/user")
+
+
 const connectToMongoDB = require("./connect");
 const URL = require("./models/url")
 
