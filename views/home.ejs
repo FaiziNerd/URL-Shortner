@@ -6,24 +6,44 @@
     <title>Home Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-   <h1 class='text-center mt-10 font-semibold text-xl'>URL Shortner</h1>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+     <div class="bg-blue-200 w-96 rounded-2xl p-8 shadow-2xl max-w-md">
+    <h1 class='text-center text-2xl font-bold text-xl text-blue-600'>🔗URL Shortner</h1>
+    
    <div class='flex justify-center'>
-  <form method="POST" action="/url">
-    <label>
-      <p class="mb-2 mt-4 text-lg  ">Enter your original URL:</p>
+  <form class="space-y-10" method="POST" action="/url">
+    <label class="block font-medium text-gray-700">
+      <p class="mt-2 text-center text-gray-500  ">Enter your original URL</p>
       <input
         type="text"
         placeholder="https://example.com"
-        class="border border-gray-400 p-2 rounded w-80"
+        class="mt-2 border border-gray-300 w-full rounded-lg px-6 py-2
+         focus:outline-none
+         focus:ring-2
+         focus:ring-blue-500"
         name="url"
       />
-      <button type="submit" class=" block mx-auto bg-blue-600 text-white 
-      px-3 py-1 rounded-lg mt-4 transition transform active:scale-110">
+      <button type="submit" class=" w-full mt-5 bg-blue-500 rounded-lg text-white font-semibold py-1
+       transition active:scale-95 duration-300 hover:bg-blue-700 font-semi-bold">
     Generate
 </button>
     </label>
   </form>
 </div>
+<div>
+  <% if (locals.id) { %>
+  <p class="mt-4 text-center text-gray-700 text-bold text-md">
+    URL Generated
+    <a
+      href="https://localhost:8001/url/<%= id %>"
+      class="text-blue-600 underline"
+      target="_blank"
+    >
+      https://localhost:8001/url/<%= id %>
+    </a>
+  </p>
+<% } %>
+</div>
+     </div>
 </body>
 </html>
