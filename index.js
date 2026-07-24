@@ -30,6 +30,7 @@ app.set("views",path.resolve("./views"))
 // Routes
 app.use("/url", urlRoute);
 app.use('/', staticRoute)
+app.use('/user', userRoute)
 
 app.get('/url/:shortId', async (req,res)=>
 {
