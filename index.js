@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path")
 const cookieParser = require('cookie-parser')
+const {restrictToLoggedinUserOnly} = require('./middlewares/auth')
 
 require("dotenv").config();
 
@@ -31,7 +32,7 @@ app.set("views",path.resolve("./views"))
 
 
 // Routes
-app.use("/url", urlRoute);
+app.use("/url", restrictToLoggedinUserOnly,urlRoute);
 app.use('/', staticRoute)
 app.use('/user', userRoute)
 

@@ -7,7 +7,7 @@ function setUser (id, user)
 
 
 
-function getUser()
+function getUser(id)
 {
     return sessionIdToUserMap.get(id)
 }
