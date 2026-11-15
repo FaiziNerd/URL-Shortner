@@ -31,15 +31,18 @@
   </form>
 </div>
 <div>
-  <% if (locals.id) { %>
-  <p class="mt-4 text-center text-gray-700 text-bold text-md">
+  <% if (locals.error) { %>
+  <p class="mt-4 text-center text-red-600"><%= error %></p>
+  <% } %>
+  <% if (locals.shortUrl) { %>
+  <p class="mt-4 text-center text-gray-700 font-bold text-md">
     URL Generated
     <a
-      href="https://localhost:8001/url/<%= id %>"
+      href="<%= shortUrl %>"
       class="text-blue-600 underline"
       target="_blank"
     >
-      https://localhost:8001/url/<%= id %>
+      <%= shortUrl %>
     </a>
   </p>
 <% } %>
