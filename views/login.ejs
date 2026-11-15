@@ -7,11 +7,14 @@
 </head>
 <body>
     <h1>Login</h1>
+    <% if (locals.error) { %>
+        <p><%= error %></p>
+    <% } %>
     <form action="/user/login" method="POST">
         <label>Email</label>
-        <input type="text" required name="email">
+        <input type="email" required name="email">
         <label>Password</label>
-        <input type="text" required name="password">
+        <input type="password" required name="password">
 
         <button type="submit">Login</button>
     </form>
